@@ -39,6 +39,7 @@ RUN \
         python-dev \
         python3-dev \
         python-pip \
+        python3-pip \
         aptitude \
     && \
     # Enable password-less sudo for all user (including the 'vagrant' user) \
