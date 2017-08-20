@@ -2,15 +2,6 @@
 # (which bug many students)
 stty stop undef
 
-export WORDCHARS="*?_-[]~=/&;!#$%^(){}<>"
-
-
-export PATH=/usr/local/xsb/bin:/usr/local/flora2:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin:/bin:/usr/games:
-export VISUAL="vim"
-export EDITOR="vim"
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib
-
-
 #if available, use a better pager
 if command -v most &>/dev/null;then
     export PAGER=most
@@ -80,6 +71,8 @@ alias j=jobs
 alias n='uname -n'
 alias h=history
 alias JJ="cd .."
+alias vi=nvim
+alias vim=nvim
 
 #########
 # In order to not to have to type rehash each
@@ -228,3 +221,11 @@ export HISTFILE SAVEHIST
 # so that we have access to the docker environments variable
 # from within the interactive shell
 sudo cat /etc/container_environment.sh | grep -v 'export _=' | source /dev/stdin
+
+export WORDCHARS="*?_-[]~=/&;!#$%^(){}<>"
+
+
+export PATH=/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/sbin:/bin
+export VISUAL="nvim"
+export EDITOR="nvim"
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/usr/lib

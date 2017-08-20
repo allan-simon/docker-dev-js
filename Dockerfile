@@ -31,7 +31,16 @@ RUN \
     # Install python (otherwise ansible will not work) \
     # Install aptitude, since ansible needs it (only apt-get is installed) \
     apt-get -y update && \
-    apt-get -y install python python-dev python-pip aptitude && \
+    apt-get -y upgrade && \
+    apt-get -y install \
+        sudo \
+        python \
+        python3 \
+        python-dev \
+        python3-dev \
+        python-pip \
+        aptitude \
+    && \
     # Enable password-less sudo for all user (including the 'vagrant' user) \
     chmod u+w ${SUDOFILE} && \
     echo '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL' >> ${SUDOFILE} && \
@@ -42,7 +51,9 @@ RUN \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     # we put the 'last time apt-get update was run' file far in the past \
     # so that ansible can then re-run apt-get update \
-    touch -t 197001010000 /var/lib/apt/periodic/update-success-stamp
+    touch -t 197001010000 /var/lib/apt/periodic/update-success-stamp && \
+    # fix the tty error on vagrant \
+    sed -i '/tty/!s/mesg n/true/' /root/.profile
 
 COPY provisioning/ /provisioning
 RUN \

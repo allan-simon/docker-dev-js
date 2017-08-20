@@ -1,19 +1,24 @@
 ---
 
+- name: add yarn repo's key
+  apt_key:
+    url: https://dl.yarnpkg.com/debian/pubkey.gpg
+    state: present 
+
+- name: put yarn repository
+  apt_repository:
+    repo: deb http://dl.yarnpkg.com/debian/ stable main
+    state: present
+
 - name: install nodejs and npm from repo
   apt: 
     name="{{ item }}"
     state=present
+  update_cache='yes'
   with_items:
     - npm
-    - nodejs
     - nodejs-legacy
-
-- name: install latest version of npm, as the one in ubuntu 14.04 is too old
-  shell: curl https://www.npmjs.com/install.sh | sh
+    - yarn
 
 - name: install gulp
-  command: npm install -g gulp
-
-- name: install eslint_d
-  command: npm install -g eslint_d eslint-plugin-react
+  command: npm install -g gulp tern tern-jsx

@@ -15,12 +15,11 @@
         update_cache=yes 
         cache_valid_time=86400
       with_items:
+       - sudo
        - git
        - tig
        - vim
        - gcc
-       - gdb
-       - cgdb
        - bash-completion # Not included in the docker image
        - make
        - tree
@@ -30,4 +29,4 @@
   roles:
     - js
     - zsh
-    - vim
+    - neovim

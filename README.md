@@ -1,9 +1,10 @@
-## Devbox for python projects using docker
+## Devbox for javascript/react projects using docker
 
 ### What you will get at the end
 
    * a docker container in which you can SSH in
-   * (optional) Vim: with YouCompleMe / Syntastic  and my vimrc (that you can easily replace by yours)
+   * node, npm, yarn and tern
+   * (optional) neovim: with deoplete ,
    * (optional) Zsh: with my zshrc (that you can replace by yours)
 
 ### Requirements
@@ -19,11 +20,16 @@
 ### Usage
 
 ```bash
-docker run -d -e HOST_USER_UID=$(id -u)  --name YOUR_PROJECT -p YOUR_LOCAL_PORT:22 js_vim_docker
+docker run -d -e HOST_USER_UID=$(id -u)  --name YOUR_PROJECT -p YOUR_LOCAL_PORT:22 js_dev_docker
 ```
 
 so then you can `ssh` in your machine with port `YOUR_LOCAL_PORT`
 
 ### Extensive list of stuff installed:
 
-TODO
+  - neovim
+  - zsh
+  - node
+  - npm
+  - tern
+  - tern-jsx
