@@ -31,5 +31,6 @@ so then you can `ssh` in your machine with port `YOUR_LOCAL_PORT`
   - zsh
   - node
   - npm
+  - yarn
   - tern
   - tern-jsx
