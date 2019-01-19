@@ -36,8 +36,8 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " for autocompletion
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug ‘ternjs/tern_for_vim’, { ‘do’: ‘npm install && npm install -g tern’ }
- Plug ‘carlitux/deoplete-ternjs’
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && sudo npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs'
 " for fuzzy completion
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
@@ -50,7 +50,7 @@ Plug 'neomake/neomake'
 " Initialize plugin system
 call plug#end()
 
-let g:neomake_javascript_enabled_makers = [‘eslint’]
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " for language server
 
