@@ -1,4 +1,6 @@
 set mouse=a
+" fix for: https://github.com/neovim/neovim/issues/7049
+set guicursor=
 "
 set tabstop=4
 set softtabstop=4
@@ -34,16 +36,21 @@ Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " for autocompletion
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug ‘ternjs/tern_for_vim’, { ‘do’: ‘npm install && npm install -g tern’ }
+ Plug ‘carlitux/deoplete-ternjs’
+" for fuzzy completion
+Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
+
 " to display in red extra whitespaces
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'vimlab/neojs'
-Plug 'benekastah/neomake'
+Plug 'neomake/neomake'
 
 
 " Initialize plugin system
 call plug#end()
 
+let g:neomake_javascript_enabled_makers = [‘eslint’]
 
 " for language server
 
