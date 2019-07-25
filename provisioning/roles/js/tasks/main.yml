@@ -17,7 +17,7 @@
 
 - name: put nodesource repository
   apt_repository:
-    repo: "deb https://deb.nodesource.com/node_11.x {{ ansible_distribution_release }} main"
+    repo: "deb https://deb.nodesource.com/node_12.x {{ ansible_distribution_release }} main"
     state: present
 
 - name: install nodejs and npm from repo
