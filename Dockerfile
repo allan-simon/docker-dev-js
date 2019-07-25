@@ -47,6 +47,8 @@ RUN \
     echo '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL' >> ${SUDOFILE} && \
     chmod u-w ${SUDOFILE} && \
     apt-get clean && \
+    # upgrade pip
+    pip3 install --upgrade pip && \
     # install ansible
     pip install ansible && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
