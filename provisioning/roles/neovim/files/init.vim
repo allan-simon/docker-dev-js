@@ -59,6 +59,41 @@ set hidden
 " Automatically start language servers.
 let g:LanguageClient_autoStart = 1
 
+" work around neovim/terminal bug for unicode character with not standard 1 char
+# width
+# see: https://github.com/neovim/neovim/issues/9997
+let g:LanguageClient_diagnosticsDisplay = {                                                                                                                                                                       
+            \    1: {                                                                                                                                                                                             
+            \        "name": "Error",                                                                                                                                                                             
+            \        "texthl": "ALEError",                                                                                                                                                                        
+            \        "signText": "x",                                                                                                                                                                             
+            \        "signTexthl": "ALEErrorSign",                                                                                                                                                                
+            \        "virtualTexthl": "Error",                                                                                                                                                                    
+            \    },                                                                                                                                                                                               
+            \    2: {                                                                                                                                                                                             
+            \        "name": "Warning",                                                                                                                                                                           
+            \        "texthl": "ALEWarning",                                                                                                                                                                      
+            \        "signText": "!",                                                                                                                                                                             
+            \        "signTexthl": "ALEWarningSign",                                                                                                                                                              
+            \        "virtualTexthl": "Todo",                                                                                                                                                                     
+            \    },                                                                                                                                                                                               
+            \    3: {                                                                                                                                                                                             
+            \        "name": "Information",                                                                                                                                                                       
+            \        "texthl": "ALEInfo",                                                                                                                                                                         
+            \        "signText": "i",                                                                                                                                                                             
+            \        "signTexthl": "ALEInfoSign",                                                                                                                                                                 
+            \        "virtualTexthl": "Todo",                                                                                                                                                                     
+            \    },                                                                                                                                                                                               
+            \    4: {                                                                                                                                                                                             
+            \        "name": "Hint",                                                                                                                                                                              
+            \        "texthl": "ALEInfo",                                                                                                                                                                         
+            \        "signText": ">",                                                                                                                                                                             
+            \        "signTexthl": "ALEInfoSign",                                                                                                                                                                 
+            \        "virtualTexthl": "Todo",                                                                                                                                                                     
+            \    },                                                                                                                                                                                               
+            \}     
+
+
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
