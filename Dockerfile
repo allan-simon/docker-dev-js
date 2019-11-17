@@ -31,7 +31,8 @@ RUN \
     # Install python (otherwise ansible will not work) \
     # Install aptitude, since ansible needs it (only apt-get is installed) \
     apt-get -y update && \
-    apt-get -y upgrade && \
+    # force confold is to workaround https://github.com/laradock/workspace/issues/29
+    apt-get -y upgrade --option=Dpkg::Options::="--force-confold" && \
     apt-get -y install \
         sudo \
         python \
