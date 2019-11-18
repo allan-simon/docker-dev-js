@@ -60,8 +60,8 @@ set hidden
 let g:LanguageClient_autoStart = 1
 
 " work around neovim/terminal bug for unicode character with not standard 1 char
-# width
-# see: https://github.com/neovim/neovim/issues/9997
+" width
+" see: https://github.com/neovim/neovim/issues/9997
 let g:LanguageClient_diagnosticsDisplay = {                                                                                                                                                                       
             \    1: {                                                                                                                                                                                             
             \        "name": "Error",                                                                                                                                                                             
