@@ -32,12 +32,6 @@ endif
 call plug#begin('~/.local/share/nvim/plugged')
 
 
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" for autocompletion
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install && sudo npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs'
 " for fuzzy completion
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/echodoc.vim'
@@ -46,8 +40,11 @@ Plug 'Shougo/echodoc.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'neomake/neomake'
 
-Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim', {'for': ['typescript', 'typescript.tsx']}
 Plug 'peitalin/vim-jsx-typescript'
+
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
 " Initialize plugin system
@@ -58,48 +55,6 @@ let g:neomake_javascript_enabled_makers = ['eslint']
 " for language server
 
 set hidden
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-" work around neovim/terminal bug for unicode character with not standard 1 char
-" width
-" see: https://github.com/neovim/neovim/issues/9997
-let g:LanguageClient_diagnosticsDisplay = {                                                                                                                                                                       
-            \    1: {                                                                                                                                                                                             
-            \        "name": "Error",                                                                                                                                                                             
-            \        "texthl": "ALEError",                                                                                                                                                                        
-            \        "signText": "x",                                                                                                                                                                             
-            \        "signTexthl": "ALEErrorSign",                                                                                                                                                                
-            \        "virtualTexthl": "Error",                                                                                                                                                                    
-            \    },                                                                                                                                                                                               
-            \    2: {                                                                                                                                                                                             
-            \        "name": "Warning",                                                                                                                                                                           
-            \        "texthl": "ALEWarning",                                                                                                                                                                      
-            \        "signText": "!",                                                                                                                                                                             
-            \        "signTexthl": "ALEWarningSign",                                                                                                                                                              
-            \        "virtualTexthl": "Todo",                                                                                                                                                                     
-            \    },                                                                                                                                                                                               
-            \    3: {                                                                                                                                                                                             
-            \        "name": "Information",                                                                                                                                                                       
-            \        "texthl": "ALEInfo",                                                                                                                                                                         
-            \        "signText": "i",                                                                                                                                                                             
-            \        "signTexthl": "ALEInfoSign",                                                                                                                                                                 
-            \        "virtualTexthl": "Todo",                                                                                                                                                                     
-            \    },                                                                                                                                                                                               
-            \    4: {                                                                                                                                                                                             
-            \        "name": "Hint",                                                                                                                                                                              
-            \        "texthl": "ALEInfo",                                                                                                                                                                         
-            \        "signText": ">",                                                                                                                                                                             
-            \        "signTexthl": "ALEInfoSign",                                                                                                                                                                 
-            \        "virtualTexthl": "Todo",                                                                                                                                                                     
-            \    },                                                                                                                                                                                               
-            \}     
-
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 
 " used by deoplete
 let g:deoplete#enable_at_startup = 1
