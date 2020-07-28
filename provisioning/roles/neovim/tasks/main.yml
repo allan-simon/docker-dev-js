@@ -51,3 +51,10 @@
     command: nvim '+silent!' '+PlugInstall!' '+qall!'
     become: yes
     become_user: vagrant
+    
+    # configure COC
+  - name: Install vim plugins 
+    command: nvim '+silent!' '+CocInstall coc-json coc-tsserver!' '+qall!'
+    become: yes
+    become_user: vagrant
+
