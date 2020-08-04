@@ -46,6 +46,9 @@ Plug 'peitalin/vim-jsx-typescript'
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
 
 " Initialize plugin system
 call plug#end()
@@ -90,3 +93,14 @@ if exists("$VIRTUAL_ENV")
 else
     let g:python3_host_prog=substitute(system("which python3"), "\n", '', 'g')
 endif
+
+
+command! -bang -nargs=* RG
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>).' /vagrant', 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+command! -bang PF call fzf#vim#files('/vagrant', <bang>0)
+nnoremap <c-p> :PF<CR>
+nnoremap <c-g> :RG<CR>
+
