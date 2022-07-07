@@ -1,5 +1,5 @@
 # Re-use the phusion baseimage which runs an SSH server etc
-FROM phusion/baseimage:0.11
+FROM phusion/baseimage:focal-1.1.0
 
 # Some definitions
 ENV SUDOFILE /etc/sudoers
@@ -34,11 +34,8 @@ RUN \
     apt-get -y upgrade && \
     apt-get -y install \
         sudo \
-        python \
         python3 \
-        python-dev \
         python3-dev \
-        python-pip \
         python3-pip \
         aptitude \
     && \
@@ -47,10 +44,8 @@ RUN \
     echo '%sudo   ALL=(ALL:ALL) NOPASSWD: ALL' >> ${SUDOFILE} && \
     chmod u-w ${SUDOFILE} && \
     apt-get clean && \
-    # upgrade pip
-    pip3 install --upgrade pip && \
     # install ansible
-    pip install ansible && \
+    pip3 install --upgrade ansible setuptools && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     # we put the 'last time apt-get update was run' file far in the past \
     # so that ansible can then re-run apt-get update \
@@ -61,7 +56,9 @@ RUN \
 COPY provisioning/ /provisioning
 RUN \
     # run ansible
-    ansible-playbook provisioning/site.yml -c local
+    ansible-playbook provisioning/site.yml -c local && \
+    chown -R vagrant /home/vagrant
+
 RUN \
     # clean
     apt-get clean && \
